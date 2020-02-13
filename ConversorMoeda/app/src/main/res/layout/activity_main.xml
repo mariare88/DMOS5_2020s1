@@ -5,26 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/edittext_valor_reais"
+        android:id="@+id/edittext_entrada"
+        android:textAlignment="center"
+        android:hint="Digite o valor a ser convertido"
+        android:inputType="numberDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/button_converter"
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Converter para dolar" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button_real2dolar"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Real para Dolar" />
+
+        <Button
+            android:id="@+id/button_dolar2real"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dolar para Real" />
+
+    </LinearLayout>
 
     <TextView
-        android:text="Valor em Dolar:"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Valor convertido:" />
 
     <TextView
-        android:id="@+id/textview_valor_dolar"
+        android:layout_marginTop="30dp"
+        android:id="@+id/textview_saida"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:textSize="30sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

@@ -12,43 +12,70 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private final double VALOR_DOLAR = 4.5;
 
-    private EditText valorReaisEditText;
-    private Button converterButton;
-    private TextView valorDolarTextView;
+    private EditText entradaEditText;
+    private Button dolar2realButton;
+    private Button real2dolarButton;
+    private TextView saidaTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        valorReaisEditText = findViewById(R.id.edittext_valor_reais);
-        converterButton = findViewById(R.id.button_converter);
-        valorDolarTextView = findViewById(R.id.textview_valor_dolar);
+        entradaEditText = findViewById(R.id.edittext_entrada);
+        saidaTextView = findViewById(R.id.textview_saida);
+        dolar2realButton = findViewById(R.id.button_dolar2real);
+        real2dolarButton = findViewById(R.id.button_real2dolar);
 
-        converterButton.setOnClickListener(this);
+        dolar2realButton.setOnClickListener(this);
+        real2dolarButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if(v == converterButton){
-            converterValor();
+        if(v == dolar2realButton){
+            paraReal();
+        }
+
+        if(v == real2dolarButton){
+            paraDolar();
         }
     }
 
-    private void converterValor(){
+    private double getEntrada() throws NumberFormatException{
+        double entrada;
+        try{
+            entrada = Double.valueOf(entradaEditText.getText().toString());
+        }catch (NumberFormatException ex){
+            entrada = 0;
+            throw ex;
+        }
+        return entrada;
+    }
 
-        double reais;
-        String valorReaisString;
-
-        valorReaisString = valorReaisEditText.getText().toString();
+    private void paraDolar(){
+        double valor;
 
         try{
-            reais = Double.valueOf(valorReaisString);
+            valor = getEntrada();
         }catch (NumberFormatException ex){
-            Toast.makeText(this, "valor inválido digitado!", Toast.LENGTH_SHORT).show();
-            reais = 0;
+            Toast.makeText(this, "Entrada inválida!", Toast.LENGTH_SHORT).show();
+            valor = 0;
         }
 
-        valorDolarTextView.setText(String.valueOf(reais/VALOR_DOLAR));
+        saidaTextView.setText(String.format("USD: %.2f", valor/VALOR_DOLAR));
+    }
+
+    private void paraReal(){
+        double valor;
+
+        try{
+            valor = getEntrada();
+        }catch (NumberFormatException ex){
+            Toast.makeText(this, "Entrada inválida!", Toast.LENGTH_SHORT).show();
+            valor = 0;
+        }
+
+        saidaTextView.setText(String.format("R$: %.2f", valor*VALOR_DOLAR));
     }
 }
