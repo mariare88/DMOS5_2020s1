@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText temperaturaEditText;
     private Button paraCelciusButton;
+    private Button paraFahrenheitButton;
     private TextView saidaTextView;
 
     @Override
@@ -22,26 +23,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         temperaturaEditText = findViewById(R.id.edittext_temperatura);
         paraCelciusButton = findViewById(R.id.button_para_celcius);
+        paraFahrenheitButton = findViewById(R.id.button_para_fahrenheit);
         saidaTextView = findViewById(R.id.textview_saida);
 
         paraCelciusButton.setOnClickListener(this);
+        paraFahrenheitButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        double entrada, saida=0;
+        String saidaFormatada;
+        saidaFormatada = "%.2f º";
         if(v == paraCelciusButton){
-            double entrada;
-            try{
-                entrada = Double.valueOf(temperaturaEditText.getText().toString());
-            }catch (NumberFormatException nfe){
-                entrada = 0;
-                mostraMensagem("Temperatura de entrada inválida!");
-            }catch (Exception e){
-                entrada = 0;
-                mostraMensagem("Erro na entrada de dados!");
-            }
-            saidaTextView.setText(String.format("%.2f ºC", paraCelsius(entrada)));
+            entrada = recuperqaTemperatura();
+            saida = paraCelsius(entrada);
+            saidaFormatada += "C ";
         }
+        if(v == paraFahrenheitButton){
+            entrada = recuperqaTemperatura();
+            saida = paraFahrenheit(entrada);
+            saidaFormatada += "F ";
+        }
+        saidaTextView.setText(String.format(saidaFormatada, saida));
     }
 
     private void mostraMensagem(String mensagem){
@@ -57,5 +61,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         double celsius;
         celsius = (temperatura - 32) / 1.8;
         return celsius;
+    }
+
+    private double paraFahrenheit(double temperatura){
+         /*
+        Fórmula disponível em https://www.infoescola.com/fisica/conversao-de-escalas-termometricas/
+
+        F = 1,8 * C + 32
+         */
+        return 1.8 * temperatura + 32;
+    }
+
+    private double recuperqaTemperatura(){
+        double temperatura;
+        try{
+            temperatura = Double.valueOf(temperaturaEditText.getText().toString());
+        }catch (NumberFormatException nfe){
+            temperatura = 0;
+            mostraMensagem(getString(R.string.temperatura_invalida));
+        }catch (Exception e){
+            temperatura = 0;
+            mostraMensagem(getString(R.string.erro_entrada));
+        }
+        return temperatura;
     }
 }

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">ConversorTemperatura</string>
-    <string name="hint_temperatura">Temperatura em Fahrenheit</string>
-    <string name="button_celsius">converter para celsius</string>
+    <string name="hint_temperatura">Temperatura</string>
+    <string name="button_celsius">celsius</string>
+    <string name="button_fahrenheit">fahrenheit</string>
+    <string name="temperatura_invalida">Temperatura de entrada inválida!</string>
+    <string name="erro_entrada">Erro na entrada de dados!</string>
 </resources>
