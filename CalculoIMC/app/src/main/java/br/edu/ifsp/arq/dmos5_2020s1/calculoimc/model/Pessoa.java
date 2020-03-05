@@ -1,14 +1,21 @@
 package br.edu.ifsp.arq.dmos5_2020s1.calculoimc.model;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 import br.edu.ifsp.arq.dmos5_2020s1.calculoimc.R;
 
-public class Pessoa {
+public class Pessoa implements Serializable {
     public static final int ABAIXO = R.string.abaixo_do_peso;
     public static final int NORMAL = R.string.peso_normal;
     public static final int SOBREPESO = R.string.sobrepeso;
     public static final int GRAU_1 = R.string.obesidade_grau_1;
     public static final int GRAU_2 = R.string.obesidade_grau_2;
     public static final int GRAU_3 = R.string.obesidade_grau_3;
+
+    public static final double IMC_REFERENCIAL_MINIMO = 18.5;
+    public static final double IMC_REFERENCIAL_MAXIMO = 25;
 
     private double peso;
     private double altura;
@@ -88,5 +95,13 @@ public class Pessoa {
                 }
             }
         }
+    }
+
+    public double pesoMinimo(){
+        return IMC_REFERENCIAL_MINIMO * Math.pow(altura, 2);
+    }
+
+    public double pesoMaximo(){
+        return IMC_REFERENCIAL_MAXIMO * Math.pow(altura, 2);
     }
 }

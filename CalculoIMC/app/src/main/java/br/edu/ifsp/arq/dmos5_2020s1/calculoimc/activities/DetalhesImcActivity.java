@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -11,7 +12,7 @@ import br.edu.ifsp.arq.dmos5_2020s1.calculoimc.R;
 import br.edu.ifsp.arq.dmos5_2020s1.calculoimc.model.Pessoa;
 
 public class DetalhesImcActivity extends AppCompatActivity {
-
+    public static final String TAG = DetalhesImcActivity.class.getSimpleName();
     private TextView imcTextView;
     private TextView resultadoTextView;
     private TextView detalhesTextView;
@@ -31,6 +32,23 @@ public class DetalhesImcActivity extends AppCompatActivity {
 
         extrairArgumentos();
         exibeDados();
+    }
+
+
+    @Override
+    public void finish() {
+
+        Bundle argumento = new Bundle();
+        argumento.putSerializable(MainActivity.KEY_PESSOA, mPessoa);
+
+        Intent intent = new Intent();
+        intent.putExtras(argumento);
+
+        setResult(RESULT_OK, intent);
+        Log.d(MainActivity.TAG, "Destruindo - ResultCode : " + RESULT_OK);
+
+
+        super.finish();
     }
 
     private void extrairArgumentos(){

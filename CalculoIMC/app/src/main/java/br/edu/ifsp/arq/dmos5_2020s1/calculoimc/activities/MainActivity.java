@@ -1,9 +1,13 @@
 package br.edu.ifsp.arq.dmos5_2020s1.calculoimc.activities;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,12 +18,17 @@ import br.edu.ifsp.arq.dmos5_2020s1.calculoimc.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    public static final String TAG = MainActivity.class.getSimpleName();
     public static final String KEY_PESO = "peso";
     public static final String KEY_ALTURA = "altura";
+    public static final String KEY_PESSOA = "pessoa";
+    public static final int CALCULAR_IMC_CODE = 99;
 
     private EditText pesoEditText;
     private EditText alturaEditText;
     private Button calcularButton;
+
+    private Pessoa mPessoa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +82,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //Inclui os argumentos na intenção
             intent.putExtras(args);
             //Solicita a abertura da nova activity
-            startActivity(intent);
+            //Contudo essa activity receberá informação como resultado
+            startActivityForResult(intent, CALCULAR_IMC_CODE);
         }else{
             Toast.makeText(this, "Entrada de dados inválida.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CALCULAR_IMC_CODE){
+            Log.d(TAG, "No ActivityResults - resultCode = " + resultCode);
+
+            if(resultCode == RESULT_OK){
+                Log.d(TAG, "Resultado OK");
+                Bundle embrulho = data.getExtras();
+                if(embrulho != null && embrulho.containsKey(KEY_PESSOA)){
+                    mPessoa = (Pessoa) embrulho.getSerializable(KEY_PESSOA);
+                    String msg = String.format("Seu peso ideal é entre %.2f e %.2f quilos.", mPessoa.pesoMinimo(), mPessoa.pesoMaximo());
+                    
+                    AlertDialog builder = new AlertDialog.Builder(this)
+                            .setTitle("Peso ideal")
+                            .setMessage(msg)
+                            .setPositiveButton("OK", null)
+                            .create();
+                    builder.show();
+                }
+            }
         }
     }
 }
