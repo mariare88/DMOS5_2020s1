@@ -27,6 +27,8 @@ public class DetalhesImcActivity extends AppCompatActivity {
         resultadoTextView = findViewById(R.id.textview_saida_resultado);
         detalhesTextView = findViewById(R.id.textview_saida_detalhes);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         extrairArgumentos();
         exibeDados();
     }
@@ -51,6 +53,10 @@ public class DetalhesImcActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+        }
         return super.onOptionsItemSelected(item);
     }
 }

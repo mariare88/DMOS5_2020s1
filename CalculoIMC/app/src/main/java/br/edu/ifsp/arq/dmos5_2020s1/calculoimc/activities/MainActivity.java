@@ -36,6 +36,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        pesoEditText.setText("");
+        alturaEditText.setText("");
+    }
+
+    @Override
     public void onClick(View v) {
         if(v == calcularButton){
             calculaIMC();
