@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Peso (KG): "
+        android:text="@string/peso_kg"
         android:textColor="#000"
         android:textSize="15sp" />
 
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textview_peso"
-        android:hint="Ex.: 75.3"
+        android:hint="@string/exemplo_peso"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textColor="#01579B"
@@ -36,7 +36,7 @@
         android:layout_below="@+id/edittext_peso"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="Altura (M): "
+        android:text="@string/altura_m"
         android:textColor="#000"
         android:textSize="15sp" />
 
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textview_altura"
-        android:hint="Ex.: 1.70"
+        android:hint="@string/exemplo_altura"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         android:textColor="#01579B"
@@ -59,7 +59,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:text="Calcular IMC" />
+        android:text="@string/botao_calcular_imc" />
 
 
 </RelativeLayout>

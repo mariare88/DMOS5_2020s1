@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.DetalhesImcActivity">
+
+    <TextView
+        android:id="@+id/textview_seu_imc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="seu imc"
+        android:textAllCaps="true"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textview_saida_imc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_seu_imc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="35.99"
+        android:textColor="#FF6F00"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textview_resultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_saida_imc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="resultado"
+        android:textAllCaps="true"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textview_saida_resultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_resultado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="obeso"
+        android:textAllCaps="true"
+        android:textColor="#FF6F00"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textview_saida_detalhes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textview_saida_resultado"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
+        android:padding="8dp"
+        android:text="bla"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>
