@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(embrulho != null && embrulho.containsKey(KEY_PESSOA)){
                     mPessoa = (Pessoa) embrulho.getSerializable(KEY_PESSOA);
                     String msg = String.format("Seu peso ideal é entre %.2f e %.2f quilos.", mPessoa.pesoMinimo(), mPessoa.pesoMaximo());
-                    
+
                     AlertDialog builder = new AlertDialog.Builder(this)
                             .setTitle("Peso ideal")
                             .setMessage(msg)
