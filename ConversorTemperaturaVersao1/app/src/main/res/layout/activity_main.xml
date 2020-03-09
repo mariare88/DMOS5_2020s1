@@ -30,12 +30,6 @@
             android:layout_height="wrap_content"
             android:text="CELSIUS" />
 
-        <Button
-            android:id="@+id/button_tempFahrButton"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FAHRENHEIT" />
 
     </LinearLayout>
 
@@ -49,7 +43,7 @@
         android:id="@+id/textview_saida"
         android:textColor="#D51C1C"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

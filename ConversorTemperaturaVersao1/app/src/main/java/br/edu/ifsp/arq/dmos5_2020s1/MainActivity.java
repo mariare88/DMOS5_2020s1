@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText entradaEditText;
     private Button tempCelsiusButton;
-    private Button tempFahrButton;
     private TextView saidaTextView;
 
     @Override
@@ -25,21 +24,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         entradaEditText = findViewById(R.id.edittext_entrada);
         saidaTextView = findViewById(R.id.textview_saida);
         tempCelsiusButton = findViewById(R.id.button_tempCelsiusButton);
-        tempFahrButton = findViewById(R.id.button_tempFahrButton);
+
 
         tempCelsiusButton.setOnClickListener(this);
-        tempFahrButton.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         if(v == tempCelsiusButton){
-            converterFarh();
+            converterCelsius();
         }
 
-        if(v == tempFahrButton){
-           converterCelsius();
-        }
+
     }
 
     private double getEntrada() throws NumberFormatException{
@@ -53,18 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return entrada;
     }
 
-    private void converterFarh(){
-        double valor;
-
-        try{
-            valor = getEntrada();
-        }catch (NumberFormatException ex){
-            Toast.makeText(this, "Entrada inválida!", Toast.LENGTH_SHORT).show();
-            valor = 0;
-        }
-
-        saidaTextView.setText(String.format("%.2f°C", (1.8*valor)+32));
-    }
 
     private void converterCelsius(){
         double valor;
@@ -76,6 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             valor = 0;
         }
 
-        saidaTextView.setText(String.format("%.2f°F",(valor - 32)/1.8));
+        saidaTextView.setText(String.format("%.2f°C",(valor - 32)/1.8));
     }
 }
