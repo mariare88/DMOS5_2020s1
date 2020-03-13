@@ -10,12 +10,16 @@ public class Calculadora {
 
     private Calculadora() {
         sCalculadora = new Calculadora();
-        memoria = 0;
-        operacao = Constantes.NULO;
+        c();
     }
 
     public static Calculadora getInstance() {
         return sCalculadora;
+    }
+
+    public void c(){
+        memoria = 0;
+        operacao = Constantes.NULO;
     }
 
     public float calcular(int operacao, float valor) {
